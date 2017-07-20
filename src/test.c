@@ -155,33 +155,61 @@ int test_agent_remove()
 	return 0;
 }
 
-int test_user_team_assign()
+int test_user_agent_assign()
 {
-	struct agent* member = agent_new("team member");
-	struct user* team = user_new("members team");
-	assert(!user_team_assign(team, member));
+	struct agent* agent = agent_new("users agent");
+	struct user* user = user_new("agents user");
+	assert(!user_agent_assign(user, agent));
 	test_count++;
 
-	assert(team->member[team->member_count -1] == member);
+	assert(user->agent[user->agent_count -1] == agent);
 	test_count++;
 
-	agent_remove(member);
-	user_remove(team);
+	assert(user_agent_assign(user, agent) == -3);
+	test_count++;
+	
+	agent_remove(agent);
+	user_remove(user);
+
+	assert(user_agent_assign(NULL, NULL) == -2);
+	test_count++;
+
+	return 0;
+}
+
+int test_user_agent_resign()
+{
+	struct agent* agent = agent_new("users agent");
+	struct user* user = user_new("agents user");
+	user_agent_assign(user, agent);
+
+	assert(!user_agent_resign(user, agent));
+	test_count++;
+
+	assert(user_agent_resign(user, agent) == -1);
+	test_count++;
+
+	agent_remove(agent);
+	user_remove(user);
+
+	assert(user_agent_resign(NULL, NULL) == -2);
+	test_count++;
 
 	return 0;
 }
 
 int test_all()
 {
-	assert(!test_test());
-	assert(!test_name_new());
-	assert(!test_name_remove());
-	assert(!test_name_change());
-	assert(!test_user_new());
-	assert(!test_user_remove());
-	assert(!test_agent_new());
-	assert(!test_agent_remove());
-	assert(!test_user_team_assign());
+	test_test();
+	test_name_new();
+	test_name_remove();
+	test_name_change();
+	test_user_new();
+	test_user_remove();
+	test_agent_new();
+	test_agent_remove();
+	test_user_agent_assign();
+	test_user_agent_resign();
 	return 0;
 }
 

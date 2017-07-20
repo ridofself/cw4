@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/run_tests.dir/src/agent.c.o CMakeFiles/run_tests.dir/src/agent_stat.c.o CMakeFiles/run_tests.dir/src/name.c.o CMakeFiles/run_tests.dir/src/test.c.o CMakeFiles/run_tests.dir/src/user.c.o  -o run_tests -rdynamic 

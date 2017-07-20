@@ -60,8 +60,8 @@ int name_change(char* oldName, char* newName)
 	for ( i=0; i<name_count; i++ )
 		if ( !strcmp(oldName, name_list[i]) && name_new(newName) )
 		{
-			strcpy(name_list[i], newName);
 			name_remove(newName);
+			strcpy(name_list[i], newName);
 			return 0; /* name was changed */
 		}
 		return -2; /* no such name */

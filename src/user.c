@@ -37,11 +37,32 @@ int user_remove(struct user* user)
 	return -1;
 }
 
-int user_team_assign(struct user* team, struct agent* member)
+int user_agent_assign(struct user* user, struct agent* agent)
 {
-	if ( team->member_count >= USER_TEAM_MAX ) return -1;
-	team->member[team->member_count++] = member;
+	int i;
+	if ( !user || !agent ) return -2;
+	if ( user->agent_count >= USER_TEAM_MAX ) return -1;
+
+	for ( i=0; i<USER_TEAM_MAX; i++ )
+		if ( agent == user->agent[i] ) return -3;
+	
+	user->agent[user->agent_count++] = agent;
 	return 0;
+}
+
+int user_agent_resign(struct user* user, struct agent* agent)
+{
+	int i;
+	if ( !user || !agent ) return -2;
+	for ( i=0; i<USER_TEAM_MAX; i++ )
+		if ( agent == user->agent[i] )
+		{
+			for ( ; i<USER_TEAM_MAX-1; i++ )
+				user->agent[i] = user->agent[i-1];
+			user->agent_count--;
+			return 0;
+		}
+		return -1;
 }
 
 /* end of file */

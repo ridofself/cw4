@@ -1,0 +1,37 @@
+In file included from /home/rid/cw4/src/agent_stat.c:4:0:
+/home/rid/cw4/src/agent.h:3:8: error: redefinition of ‘struct agent’
+ struct agent
+        ^
+In file included from /home/rid/cw4/src/agent_stat.h:3:0,
+                 from /home/rid/cw4/src/agent_stat.c:3:
+/home/rid/cw4/src/agent.h:3:8: note: originally defined here
+ struct agent
+        ^
+In file included from /home/rid/cw4/src/agent_stat.c:4:0:
+/home/rid/cw4/src/agent.h:9:15: error: conflicting types for ‘agent_new’
+ struct agent* agent_new(const char*);
+               ^
+In file included from /home/rid/cw4/src/agent_stat.h:3:0,
+                 from /home/rid/cw4/src/agent_stat.c:3:
+/home/rid/cw4/src/agent.h:9:15: note: previous declaration of ‘agent_new’ was here
+ struct agent* agent_new(const char*);
+               ^
+In file included from /home/rid/cw4/src/agent_stat.c:4:0:
+/home/rid/cw4/src/agent.h:10:5: error: conflicting types for ‘agent_remove’
+ int agent_remove(struct agent*);
+     ^
+In file included from /home/rid/cw4/src/agent_stat.h:3:0,
+                 from /home/rid/cw4/src/agent_stat.c:3:
+/home/rid/cw4/src/agent.h:10:5: note: previous declaration of ‘agent_remove’ was here
+ int agent_remove(struct agent*);
+     ^
+/home/rid/cw4/src/agent_stat.c:6:7: error: conflicting types for ‘agent_stat_weight’
+ float agent_stat_weight(struct agent* agent)
+       ^
+In file included from /home/rid/cw4/src/agent_stat.c:3:0:
+/home/rid/cw4/src/agent_stat.h:12:7: note: previous declaration of ‘agent_stat_weight’ was here
+ float agent_stat_weight(struct agent*);
+       ^
+make[2]: *** [CMakeFiles/run_tests.dir/src/agent_stat.c.o] Error 1
+make[1]: *** [CMakeFiles/run_tests.dir/all] Error 2
+make: *** [all] Error 2
